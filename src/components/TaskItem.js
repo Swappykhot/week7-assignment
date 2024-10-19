@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import TaskContext from '../context/TaskContext';
+import React, { useContext } from 'react';  // Ensure useContext is imported
+import TaskContext from '../context/TaskContext';  // Ensure TaskContext is imported
+import App from '../App';  // Import custom styles
 
 const TaskItem = ({ task }) => {
-    const { dispatch } = useContext(TaskContext);
+    const { dispatch } = useContext(TaskContext);  // Access the dispatch method from TaskContext
 
     const handleToggle = () => {
         dispatch({ type: 'TOGGLE_TASK', payload: task.id });
@@ -13,14 +14,16 @@ const TaskItem = ({ task }) => {
     };
 
     return (
-        <li>
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+        <li className="task-item">
+            <span className={`task-name ${task.completed ? "completed" : ""}`}>
                 {task.name}
             </span>
-            <button onClick={handleToggle}>
-                {task.completed ? 'Undo' : 'Complete'}
-            </button>
-            <button onClick={handleRemove}>Remove</button>
+            <div className="task-actions">
+                <button className={`toggle-btn ${task.completed ? 'undo' : 'complete'}`} onClick={handleToggle}>
+                    {task.completed ? 'Undo' : 'Complete'}
+                </button>
+                <button className="remove-btn" onClick={handleRemove}>Remove</button>
+            </div>
         </li>
     );
 };

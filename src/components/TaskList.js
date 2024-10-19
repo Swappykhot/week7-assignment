@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import TaskContext from '../context/TaskContext';
 import TaskItem from './TaskItem';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './TaskList.css'; // Assuming you have a CSS file for animations
-
+import App from '../App';
 const TaskList = () => {
     const { tasks } = useContext(TaskContext);
 
